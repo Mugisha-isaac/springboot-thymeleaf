@@ -44,4 +44,20 @@ public class User {
         this.password = password;
         this.roles = roles;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Collection<Role> getRoles() {
+        return roles;
+    }
 }
