@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
     @Autowired
@@ -19,5 +21,24 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public void save(Employee employee) {
        this.employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee getById(long id) {
+        Optional<Employee> optional = employeeRepository.findById(id);
+        Employee employee = null;
+
+        if(optional.isPresent()){
+            employee = optional.get();
+        }
+        else{
+            throw  new RuntimeException("Employee Not Found");
+        }
+        return  employee;
+    }
+
+    @Override
+    public void deleteById(long id) {
+        this.employeeRepository.deleteById(id);
     }
 }

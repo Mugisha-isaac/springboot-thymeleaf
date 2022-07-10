@@ -8,4 +8,6 @@ import java.util.List;
 public interface EmployeeService {
     List<Employee> getALl();
     void save(Employee employee);
+    Employee getById(long id);
+    void deleteById(long id);
 }
